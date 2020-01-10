@@ -1,0 +1,17 @@
+<div class="cardLogin mb-5">
+
+    <h2 class="text-center">Login pour acheter</h2>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="nick" >
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="password">
+    </div>
+  
+        <button type="submit" class="btn"
+            (click)="onValide()">ENTRER</button>
+
+    <div>{{nick}}</div>
+    <div>{{password}}</div>
+    
+</div>

@@ -1,0 +1,58 @@
+.card {
+    margin-bottom: 30px;
+    border: 2px solid #e6e6e6;
+    border-radius: 21px;
+    padding: 100px 0px 60px;
+
+    
+
+    h3 {
+        text-align: center;
+        z-index: 5;
+        position: absolute;
+        top: 25px;
+        padding: 6px 18px;
+        font-size: 21px;
+    }
+    span {
+        font-size: 25px;
+        background: #ef1414de;
+        width: 50%;
+        color: #fff;
+        padding: 0px 20px;
+        z-index: 10;
+        position: absolute;
+        bottom: 30px;
+        right: 0px;
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    .btn {
+        
+        z-index: 20;
+        background: #fff;
+        width: 39px;
+        border: 1px solid #f00;
+        border-radius: 66px;
+        position: absolute;
+        bottom: 30px;
+        left: 78px;
+        transition: all 0.3s;
+    }
+    
+    
+}
+
+.card .btn:hover{
+        
+    background: #f13232!important;
+    color: #fff;
+    bottom: 38px;
+    position: absolute;
+}
+
+.card:hover {
+    box-shadow: 0 10px 29px rgba(172, 172, 172, 0.4);
+    border-color: #f00;
+    transition: all 0.3s;
+}
