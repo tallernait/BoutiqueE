@@ -1,21 +1,37 @@
 <div class="container">
-    <h2>Super Boutique Cooking</h2>
+    <h2 class="superTitle">Super Boutique Cooking</h2>
     <form >  
         <div class="row">
-            <div class="col-9 row">
+            
+            <div class="col-md-3">
+
+                <div class="title"> Products List </div>
+                <div *ngFor="let pBuy of productsBuy; let i = index" class="listBuy"> 
+                    
+                    <span class="quantity">{{pBuy.quantity}} </span>
+                    <div class="btn" (click)="onRemove(pBuy , i)"> - </div>
+                    <img class="img-fluid" src="/assets/{{pBuy.photo}}" alt="">
+                    <span>{{pBuy.pricePro | currency}}</span>
+
+                </div>
+                <hr>
+            <div >Total de l'achat : {{total | currency}}</div>
+                <hr>
+
+                <button type="submit"
+                    class="btnBuy mb-3"
+                    (click)="onPayer()">BUY</button>
+
+                <button type="submit"
+                    class="btnBuy"
+                    (click)="onInvoice()">INVOICE</button>
+
+            </div>
+            <div class="col-md-9 row">
                 <app-item *ngFor="let product of products"
                 [product] = "product" class="col-md-6 col-xl-4"></app-item>
             </div>
-            <div class="col-3"></div>
+            
         </div>
-        <div class="row">
-            <div class="col-9">Total de l'achat : {{total}}</div>
-            <div class="col-9">
-                <button type="submit"
-                     class="buttonRed"
-                    (click)="onPayer()">PAYER</button>
-            </div>
-        </div>
-
     </form>
 </div>

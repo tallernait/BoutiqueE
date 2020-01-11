@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServiceBoutique } from './service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Boutique E';
+
+  constructor(
+    private service : ServiceBoutique
+  ){}
+
+  getTotal(){
+    return this.service.getTotal();
+  };
 }

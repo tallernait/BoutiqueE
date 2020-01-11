@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { Product } from '../models/Product.models';
 import { ServiceBoutique } from '../service.service';
 
@@ -10,7 +10,9 @@ import { ServiceBoutique } from '../service.service';
 export class StoreComponent implements OnInit {
 
   products : Product[] = [];
-  total:number = 0;
+  productsBuy : Product[] = [];
+  @Input() total : number = 909;
+
 
   constructor(
       private service :ServiceBoutique
@@ -19,19 +21,31 @@ export class StoreComponent implements OnInit {
          .subscribe(
            (remoteProduct : Product[]) =>{
              this.products = remoteProduct;
-             console.log(this.products);
            }
          ); 
-
-         
      }
 
   ngOnInit() {
-    
+  this.productsBuy = this.service.getProductsListPaid();
   }
 
   onPayer(){
 
   }
+
+  onInvoice(){
+
+  }
+  
+  onRemove(p : Product, i :number ){
+    if(p.quantity > 1){
+      --this.productsBuy[i].quantity;
+    }else{
+      this.service.removeProductsListPaid(i);
+    }
+    this.service.setTotal()
+  }
+
+  
 
 }
