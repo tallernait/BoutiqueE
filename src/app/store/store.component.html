@@ -1,6 +1,6 @@
 <div class="container">
     <h2 class="superTitle">Super Boutique Cooking</h2>
-    <form >  
+    <form>  
         <div class="row">
             
             <div class="col-md-3">
@@ -15,16 +15,11 @@
 
                 </div>
                 <hr>
-            <div >Total de l'achat : {{total | currency}}</div>
+            
+                <div >Total de l'achat : {{total | currency}}</div>
                 <hr>
 
-                <button type="submit"
-                    class="btnBuy mb-3"
-                    (click)="onPayer()">BUY</button>
-
-                <button type="submit"
-                    class="btnBuy"
-                    (click)="onInvoice()">INVOICE</button>
+                <button type="submit" class="btnBuy mb-3" (click)="onPayer()" > BUY </button>
 
             </div>
             <div class="col-md-9 row">
@@ -35,3 +30,5 @@
         </div>
     </form>
 </div>
+
+

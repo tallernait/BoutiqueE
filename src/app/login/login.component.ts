@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../models/Customers.model';
 import { ServiceBoutique } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   customer : Customer= null;
  
   constructor(
-    private service : ServiceBoutique 
+    private service : ServiceBoutique ,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,8 @@ export class LoginComponent {
           if(c != null){
             if(c.password == this.password){
               this.customer = c;
-              console.log(`Bienvenido!!!! ${this.customer.name}`)
+              console.log(`Bienvenido!!!! ${this.customer.name}`);
+              this.router.navigate(['store']);
             }
           }
 

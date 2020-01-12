@@ -10,13 +10,15 @@ import { ServiceBoutique } from './service.service';
 import { DataService } from './data.services';
 import { StoreComponent } from './store/store.component';
 import { ItemComponent } from './store/item/item.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     StoreComponent,
-    ItemComponent
+    ItemComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

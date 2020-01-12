@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Product } from '../models/Product.models';
 import { ServiceBoutique } from '../service.service';
+import { Invoice } from '../models/Invoice.model';
 
 @Component({
   selector: 'app-store',
@@ -11,11 +12,14 @@ export class StoreComponent implements OnInit {
 
   products : Product[] = [];
   productsBuy : Product[] = [];
-  @Input() total : number = 909;
+  @Input()total : number = 909;
+  @Input() idClient : number = 3;
+  
 
 
   constructor(
-      private service :ServiceBoutique
+      private service :ServiceBoutique,
+      
     ){
        service.getProducts()
          .subscribe(
@@ -30,13 +34,20 @@ export class StoreComponent implements OnInit {
   }
 
   onPayer(){
-
+   
+    let invoice = new Invoice(-1, JSON.stringify(this.productsBuy) , this.total , this.idClient , new Date() );
+    
+    this.service.addInvoice( invoice )
+        .subscribe(
+          resp => {
+            console.log("response %o, ", resp);
+          });
   }
 
   onInvoice(){
 
   }
-  
+
   onRemove(p : Product, i :number ){
     if(p.quantity > 1){
       --this.productsBuy[i].quantity;
@@ -45,7 +56,6 @@ export class StoreComponent implements OnInit {
     }
     this.service.setTotal()
   }
-
   
 
 }

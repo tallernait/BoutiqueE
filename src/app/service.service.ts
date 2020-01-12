@@ -2,6 +2,7 @@ import { DataService } from './data.services';
 import { Customer } from './models/Customers.model';
 import { Injectable } from '@angular/core';
 import { Product } from './models/Product.models';
+import { Invoice } from './models/Invoice.model';
 
 @Injectable()
 export class ServiceBoutique {
@@ -17,6 +18,10 @@ export class ServiceBoutique {
     }
     getProducts(){
         return this.data.loadProducts();
+    }
+
+    addInvoice( invoice : Invoice){
+        return this.data.addInvoice(invoice)
     }
     
     getProductsListPaid(){

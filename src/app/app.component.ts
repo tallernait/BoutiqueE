@@ -8,12 +8,13 @@ import { ServiceBoutique } from './service.service';
 })
 export class AppComponent {
   title = 'Boutique E';
+  cookie :string;
 
   constructor(
     private service : ServiceBoutique
   ){}
 
-  getTotal(){
-    return this.service.getTotal();
-  };
+   getTotal(){
+     return this.service.getTotal();
+   };
 }
