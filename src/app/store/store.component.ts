@@ -2,6 +2,8 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Product } from '../models/Product.models';
 import { ServiceBoutique } from '../service.service';
 import { Invoice } from '../models/Invoice.model';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-store',
@@ -12,13 +14,16 @@ export class StoreComponent implements OnInit {
 
   products : Product[] = [];
   productsBuy : Product[] = [];
-  @Input()total : number = 909;
-  @Input() idClient : number = 3;
+  total : number = 0;
+  nick : string;
+  idClient : number = 3;
   
 
 
   constructor(
       private service :ServiceBoutique,
+      private router : Router,
+      private cookieService: CookieService
       
     ){
        service.getProducts()
@@ -27,6 +32,8 @@ export class StoreComponent implements OnInit {
              this.products = remoteProduct;
            }
          ); 
+      this.nick = this.service.cookie;   // Prenom  il vient de la la cookie
+      this.idClient = this.service.idC;  // ID client il vient de la la cookie
      }
 
   ngOnInit() {
@@ -35,17 +42,17 @@ export class StoreComponent implements OnInit {
 
   onPayer(){
    
-    let invoice = new Invoice(-1, JSON.stringify(this.productsBuy) , this.total , this.idClient , new Date() );
-    
+    let invoice = new Invoice(0, JSON.stringify(this.productsBuy) , this.total , this.idClient , new Date() );
     this.service.addInvoice( invoice )
-        .subscribe(
-          resp => {
-            console.log("response %o, ", resp);
-          });
-  }
-
-  onInvoice(){
-
+        .toPromise()
+        .then(
+          (resp : Invoice[])  => {
+            this.service.setInvoices(resp);
+            
+            let listString = JSON.stringify(resp);
+            this.cookieService.set( 'invoices',listString );
+            this.router.navigate(['invoices']);
+          });    
   }
 
   onRemove(p : Product, i :number ){
@@ -54,8 +61,17 @@ export class StoreComponent implements OnInit {
     }else{
       this.service.removeProductsListPaid(i);
     }
-    this.service.setTotal()
+    this.setTotal()
   }
-  
+
+  setTotal(){
+        let total:number= 0;
+        for (const p of this.productsBuy) {
+           total += p.quantity * p.pricePro;
+        }
+        this.total =  total;
+        console.log(this.total)
+    }
+ 
 
 }

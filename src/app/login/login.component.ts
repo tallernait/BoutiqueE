@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from '../models/Customers.model';
 import { ServiceBoutique } from '../service.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,11 @@ export class LoginComponent {
 
   nick :string="";
   password :string="";
-  customer : Customer= null;
+  customer : Customer = null;
  
   constructor(
     private service : ServiceBoutique ,
+    private cookieService : CookieService,
     private router : Router
   ) { }
 
@@ -23,17 +25,24 @@ export class LoginComponent {
   }
 
   onValide(){
-      this.service.getCustomer(this.nick)
+    let cLocal = new Customer(-1,this.nick," ", this.password, -1);
+    
+      this.service.getCustomer(cLocal)
       .subscribe(
         (c : Customer) =>{
-          //this.customer = c;
-
+          console.log(c);
           if(c != null){
-            if(c.password == this.password){
-              this.customer = c;
-              console.log(`Bienvenido!!!! ${this.customer.name}`);
+            this.customer = c;
+              console.log(`Bienvenido!!!! ${this.customer.name }`);
+
+              this.cookieService.set( 'IdC', String(this.customer.iduser) );
+              this.cookieService.set( 'nick', this.customer.name );
+              this.cookieService.set( 'invoices', this.customer.name );
+              
+              this.service.cookie =  this.cookieService.get('nick');
+              this.service.idC = Number(this.cookieService.get('IdC'));
               this.router.navigate(['store']);
-            }
+           
           }
 
         }

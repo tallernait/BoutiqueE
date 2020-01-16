@@ -3,17 +3,17 @@
     <div class="col align-self-center">
      
     <div class="cardLogin mb-5">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && onValide()">    
+            <h2 class="text-center">Login pour acheter</h2>
+            <div class="form-group">
+                <input type="text" name="user" id="user" [(ngModel)]="nick" >
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" [(ngModel)]="password">
+            </div>
 
-        <h2 class="text-center">Login pour acheter</h2>
-        <div class="form-group">
-            <input type="text" [(ngModel)]="nick" >
-        </div>
-        <div class="form-group">
-            <input type="text" [(ngModel)]="password">
-        </div>
-    
-            <button type="submit" class="btn"
-                (click)="onValide()">ENTRER</button>
+                <button type="submit" class="btn">ENTRER</button>
+        </form>
         
     </div>
 

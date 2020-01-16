@@ -1,0 +1,102 @@
+.superTitle {
+    text-align: center;
+    margin: 50px 30px 67px;
+    text-transform: uppercase;
+    font-size: 2.4em;
+    font-weight: 300;
+    letter-spacing: 29px;
+}
+
+.title {
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #ef1414de;
+    margin-bottom: 20px;
+    padding-bottom: 7px;
+    text-transform: uppercase;
+    color: #f13232;
+    letter-spacing: 10px;
+}
+
+.listBuy img {
+    height: 51px;
+    margin: 0px 20px;
+}
+.listBuy span:last-child {
+     width: 30px;
+    position: relative;
+    left: 30px;
+}
+
+button.btnBuy {
+    border: 1px solid #ef1414de;
+    width: 100%;
+    padding: 10px;
+    letter-spacing: 16px;
+    transition: all 0.3s;
+}
+
+button.btnBuy:hover {
+    color: #fff;
+    background: #ef1414de;
+}
+
+
+.btn {
+    background: #fff;
+    width: 39px;
+    border: 1px solid #f00;
+    border-radius: 66px;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #f00;
+    border: 1px solid #fff;
+    color:#fff;
+}
+
+.quantity {
+    width: 25px!important;
+    display: inline-block;
+}
+
+.cardInvoice{
+    background: #fff;
+    columns: #333;
+    padding: 20px;
+    box-shadow:  0  10px 29px rgba(172, 172, 172, 0.3);
+    padding: 40px 20px;
+    border-radius: 30px;
+    margin-top: 100px ;
+    width: 100%;
+}
+
+.total {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 7px;
+    color: #f00;
+    text-align: right;
+}
+hr.red {
+    border-color: #f00;
+}
+
+.item span {
+    color: #888;
+}
+
+.item p {
+    color: #f00;
+}
+
+.item p span:first-child {
+    width: 58px !important;
+    display: inline-grid;
+}
+.item p span:last-child {
+    float: right;
+    display: inline-block;
+    
+}

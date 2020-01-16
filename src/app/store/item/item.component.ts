@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/Product.models';
 import { ServiceBoutique } from 'src/app/service.service';
+import { StoreComponent } from '../store.component';
 
 @Component({
   selector: 'app-item',
@@ -12,7 +13,8 @@ export class ItemComponent implements OnInit {
   @Input() product : Product;
   listProductPaid : Product [] = [];
 
-  constructor( private service : ServiceBoutique) { }
+  constructor( private service : ServiceBoutique ,
+    private store :StoreComponent) { }
 
   ngOnInit() {
    this.listProductPaid = this.service.getProductsListPaid()
@@ -25,7 +27,7 @@ export class ItemComponent implements OnInit {
       let i = this.listProductPaid.indexOf(product);
       ++this.listProductPaid[i].quantity;
     }
-    this.service.setTotal();
+    this.store.setTotal();
   }
 
 

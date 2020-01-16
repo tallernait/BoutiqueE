@@ -11,6 +11,9 @@ import { DataService } from './data.services';
 import { StoreComponent } from './store/store.component';
 import { ItemComponent } from './store/item/item.component';
 import { ErrorComponent } from './error/error.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { ErrorComponent } from './error/error.component';
     LoginComponent,
     StoreComponent,
     ItemComponent,
-    ErrorComponent
+    ErrorComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ServiceBoutique, DataService],
+  providers: [ServiceBoutique, DataService , CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

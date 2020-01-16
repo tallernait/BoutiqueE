@@ -1,0 +1,46 @@
+<div class="container">
+    <h2 class="superTitle">Boutique Cooking {{nick}}'s</h2>
+    <div class="text-center"> </div>
+    <form>  
+        <div class="row">
+            
+            <div class="col-md-4">
+
+                
+                <div class="title"> Invoice List </div>
+                <div *ngFor="let invoice of invoices; let i = index" class="listBuy mb-3"> 
+                    
+                    <span class="quantity">{{i+1}} </span>
+                    <div class="btn" (click)="onShowInvoice(invoice)"> > </div>
+                    <span>{{invoice.date }}</span>
+
+                </div>
+                <hr>
+
+                <button type="submit" class="btnBuy mt-3" (click)="onStore()" > BACK STORE </button>
+
+
+            </div>
+            <div class="col-md-8 row">
+
+                <div class="cardInvoice m-2">
+
+                    <h2 class="text-center">Date: {{date}} </h2>
+                    <hr class="red">
+                    <div *ngFor="let pro of listP" class="item">
+                    <p> <span> Qty. {{pro.quantity}} </span> | <span> {{pro.descriptionPro}} </span> | <span>Prix: {{pro.pricePro}}</span> </p>
+                        <hr>
+                    </div>
+                    <div class="total">
+                       total // {{total | currency}}
+                    </div>
+                                    
+                </div>
+                                
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+
