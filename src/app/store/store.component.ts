@@ -48,7 +48,7 @@ export class StoreComponent implements OnInit {
         .then(
           (resp : Invoice[])  => {
             this.service.setInvoices(resp);
-            
+            console.table(resp)
             let listString = JSON.stringify(resp);
             this.cookieService.set( 'invoices',listString );
             this.router.navigate(['invoices']);
@@ -70,7 +70,11 @@ export class StoreComponent implements OnInit {
            total += p.quantity * p.pricePro;
         }
         this.total =  total;
-        console.log(this.total)
+        console.log(this.total);
+    }
+  
+    onlist(){
+      return this.productsBuy.length;
     }
  
 

@@ -21,7 +21,7 @@
                 <div >Total de l'achat : {{total | currency}}</div>
                 <hr>
 
-                <button type="submit" class="btnBuy mb-3" (click)="onPayer()" > BUY </button>
+                <button *ngIf="total != 0" type="submit" class="btnBuy mb-3" (click)="onPayer()" > BUY </button>
 
             </div>
             <div class="col-md-9 row">
